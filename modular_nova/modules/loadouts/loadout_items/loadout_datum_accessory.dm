@@ -54,10 +54,6 @@
 	name = "Orange Armband"
 	item_path = /obj/item/clothing/accessory/armband/engine/nonsec
 
-/datum/loadout_item/accessory/armband_security_nonsec
-	name = "Red Armband"
-	item_path = /obj/item/clothing/accessory/armband/nonsec
-
 /datum/loadout_item/accessory/armband_security
 	name = "Security Deputy Armband"
 	item_path = /obj/item/clothing/accessory/armband/deputy
