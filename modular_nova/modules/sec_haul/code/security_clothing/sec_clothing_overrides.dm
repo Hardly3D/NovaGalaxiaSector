@@ -3,13 +3,6 @@
 */
 
 /*
-* ACCESSORIES
-*/
-// For consistency with other armbands
-/obj/item/clothing/accessory/armband/nonsec
-	desc = "An armband, worn to signify proficiency in a skill or association with a department. This one is red."
-
-/*
 * BELTS + HOLSTER
 */
 /obj/item/storage/belt/security
