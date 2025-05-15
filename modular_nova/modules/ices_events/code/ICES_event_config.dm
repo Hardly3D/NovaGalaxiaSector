@@ -372,6 +372,7 @@
  */
 /datum/round_event_control/mold
 	max_occurrences = 1
+	min_players = 45
 	weight = MED_EVENT_FREQ
 	intensity_restriction = TRUE
 
