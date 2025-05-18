@@ -62,6 +62,60 @@
 	user.physiology.brute_mod /= brute_mod
 	user.physiology.burn_mod /= burn_mod
 
+/datum/quirk/temp_intolerance
+	name = "Temperature Intolerance"
+	desc = "You are very sensitive to temperature changes, making you extremely vulnerable to the heat and cold."
+	value = -4
+	medical_record_text = "Patient's body is highly sensitive to changes in temperature, resulting in extreme discomfort when exposed to the heat and cold."
+	icon = FA_ICON_FIRE_FLAME_SIMPLE
+	var/heat_mod
+	var/cold_mod
+
+/datum/quirk_constant_data/temp_intolerance
+	associated_typepath = /datum/quirk/temp_intolerance
+	customization_options = list(
+		/datum/preference/numeric/temp_intolerance_customization/heat,
+		/datum/preference/numeric/temp_intolerance_customization/cold,
+	)
+
+/datum/preference/numeric/temp_intolerance_customization
+	abstract_type = /datum/preference/numeric/temp_intolerance_customization
+	category = PREFERENCE_CATEGORY_MANUALLY_RENDERED
+	savefile_identifier = PREFERENCE_CHARACTER
+
+	minimum = 1.25
+	maximum = 5 // 5x damage, arbitrary
+
+	step = 0.01
+
+/datum/preference/numeric/temp_intolerance_customization/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
+/datum/preference/numeric/temp_intolerance_customization/create_default_value()
+	return 1.25
+
+/datum/preference/numeric/temp_intolerance_customization/heat
+	savefile_key = "tempintolerance_heat"
+
+/datum/preference/numeric/temp_intolerance_customization/cold
+	savefile_key = "tempintolerance_cold"
+
+/datum/quirk/temp_intolerance/add_unique(client/client_source)
+	var/mob/living/carbon/human/user = quirk_holder
+	var/datum/preferences/prefs = client_source?.prefs
+	heat_mod = prefs?.read_preference(/datum/preference/numeric/temp_intolerance_customization/heat) || 1.25
+	cold_mod = prefs?.read_preference(/datum/preference/numeric/temp_intolerance_customization/cold) || 1.25
+
+	user.dna.species.heatmod *= heat_mod
+	user.dna.species.coldmod *= cold_mod
+
+/datum/quirk/temp_intolerance/remove()
+	. = ..()
+
+	var/mob/living/carbon/human/user = quirk_holder
+	user.dna.species.heatmod /= heat_mod
+	user.dna.species.coldmod /= cold_mod
+
 /datum/quirk/monophobia
 	name = "Monophobia"
 	desc = "You will become increasingly stressed when not in company of others, triggering panic reactions ranging from sickness to heart attacks."
