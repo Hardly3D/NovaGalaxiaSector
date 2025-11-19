@@ -28,7 +28,7 @@
 
 /obj/structure/closet/shuttle/emergency/PopulateContents()
 	for (var/i in 1 to 2)
-		new /obj/item/tank/internals/emergency_oxygen/engi(src)
+		new /obj/item/tank/internals/emergency_oxygen(src)
 		new /obj/item/clothing/mask/gas/alt(src)
 	new /obj/item/storage/toolbox/emergency(src)
 
