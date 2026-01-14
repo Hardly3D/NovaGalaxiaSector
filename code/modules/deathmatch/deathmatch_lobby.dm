@@ -153,7 +153,13 @@
 
 	for(var/datum/deathmatch_modifier/modifier as anything in modifiers)
 		GLOB.deathmatch_game.modifiers[modifier].apply(new_player, src)
-
+	// NOVA EDIT ADDITION START - Set gun safety to false on spawn
+	for(var/obj/item/gun/gun in new_player.get_all_gear())
+		var/datum/component/gun_safety/safety = gun.GetComponent(/datum/component/gun_safety)
+		if(safety)
+			safety.safety_currently_on = FALSE
+			safety.update_action_button_state()
+	// NOVA EDIT ADDITION END
 	// register death handling.
 	RegisterSignals(new_player, list(COMSIG_LIVING_DEATH, COMSIG_MOB_GHOSTIZED, COMSIG_QDELETING), PROC_REF(player_died))
 	// NOVA EDIT ADDITION START - Synth brains don't drop here - let them delete with the mob
