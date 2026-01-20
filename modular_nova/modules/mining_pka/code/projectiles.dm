@@ -17,8 +17,6 @@
 
 /obj/item/ammo_casing/energy/kinetic/shockwave
 	projectile_type = /obj/projectile/kinetic/shockwave
-	pellets = 8
-	variance = 360
 	fire_sound = 'sound/items/weapons/gun/general/cannon.ogg'
 
 /obj/item/ammo_casing/energy/kinetic/m79
@@ -55,4 +53,5 @@
 
 /obj/projectile/kinetic/shockwave
 	name = "concussive kinetic force"
-	range = 1
+	damage = 40
+	range = 0
