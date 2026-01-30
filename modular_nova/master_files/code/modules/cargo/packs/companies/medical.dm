@@ -56,7 +56,7 @@
 
 /datum/supply_pack/companies/medical/first_aid/medicated_sutures
 	contains = list(/obj/item/stack/medical/suture/medicated)
-	cost = CARGO_CRATE_VALUE * 0.2
+	cost = CARGO_CRATE_VALUE * 0.3
 
 /datum/supply_pack/companies/medical/first_aid/red_sun
 	contains = list(/obj/item/stack/medical/ointment/red_sun)
@@ -72,7 +72,7 @@
 
 /datum/supply_pack/companies/medical/first_aid/advanced_mesh
 	contains = list(/obj/item/stack/medical/mesh/advanced)
-	cost = CARGO_CRATE_VALUE * 0.2
+	cost = CARGO_CRATE_VALUE * 0.3
 
 /datum/supply_pack/companies/medical/first_aid/sterile_gauze
 	contains = list(/obj/item/stack/medical/gauze/sterilized)
